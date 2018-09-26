@@ -1,0 +1,6 @@
+abs 225/90 +5fl
+	min layer time =10s
+	lift head on
+pla 210/60 +5fl
+
+C:\Program Files\Cura 2.6\resources\materials
