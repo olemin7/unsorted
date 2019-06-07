@@ -1,8 +1,6 @@
 abs 225/90 +5fl
 	min layer time =10s
 	lift head on
-pla 210/60 +5fl
-10s min time
 
 pla 205/60 +5fl
 
