@@ -1,7 +1,7 @@
-abs 225/90 +5fl
-	min layer time =10s
-	lift head on
+material|temp			| min layer time  	|speed|retract|colling
+abs+ 	|	225/90 +5fl	| 10s lift head on	|60mm |5mm	|-
+pla 	|	205/60 +5fl	| 					|60mm |5mm	|+
+abs flex|	250/90 +5fl	| 					|30mm |7mm	|+/-
 
-pla 205/60 +5fl
 
 C:\Program Files\Cura 2.6\resources\materials
