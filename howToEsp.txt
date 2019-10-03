@@ -1,5 +1,0 @@
-[eclipse]
-{platform.txt}
-recipe.c.combine.pattern={recipe.hooks.linking.prelink.1.pattern} & 
-recipe.objcopy.hex.pattern={recipe.objcopy.hex.1.pattern}
-
