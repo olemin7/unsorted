@@ -1,7 +1,7 @@
-material|temp			| min layer time  	|speed|retract	|colling	|
-abs+ 	|	220/100 +5fl	| 10s lift head on	|60mm |5mm		|-			|
-pla 	|	210/60 +5fl	| 					|60mm |5mm		|+
-abs flex|	250/90 +5fl	| 					|30mm |7mm		|+/-
+material|temp 				|  temp glass 		|min layer time  	|speed|retract	|colling	|
+abs+ 	|	220/100 +5fl	| 					|10s lift head on	|60mm |5mm		|-			|
+pla 	|	210/60 +5fl		|210/70(glass) +5fl	| 					|60mm |5mm		|+
+abs flex|	250/90 +5fl		| 					|					|30mm |7mm		|+/-
 
 
 C:\Program Files\Cura 2.6\resources\materials

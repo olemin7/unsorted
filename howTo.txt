@@ -10,3 +10,6 @@ after reboot check if
 $vcgencmd otp_dump | grep 17:
 17:3020000a
 
+[engraver]
+sw
+https://inkscape.org/release/inkscape-0.92.4/
