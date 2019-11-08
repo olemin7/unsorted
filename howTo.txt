@@ -15,4 +15,16 @@ sw
 https://inkscape.org/release/inkscape-0.92.4/
 
 https://www.autodesk.com/products/eagle/overview
-	https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
+https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
+=======
+[cura]
+off nozzles
+* go to Help -> Show configuration folder
+* close cura
+* In the configuration folder, go to "definition_changes"
+* in that folder, find the *_settings.inst.cfg for your printer, and open it in a text editor
+* add the following line to the [values] section:
+machine_nozzle_temp_enabled = False
+* save the file
+* restart Cura
+You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
