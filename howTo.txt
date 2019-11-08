@@ -13,3 +13,6 @@ $vcgencmd otp_dump | grep 17:
 [engraver]
 sw
 https://inkscape.org/release/inkscape-0.92.4/
+
+https://www.autodesk.com/products/eagle/overview
+	https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
