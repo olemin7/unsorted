@@ -1,7 +1,62 @@
-material|temp 				|  temp glass 		|min layer time  	|speed|retract	|colling	|
-abs+ 	|	220/100 +5fl	| 					|10s lift head on	|60mm |5mm		|-			|
-pla 	|	210/60 +5fl		|210/70(glass) +5fl	| 					|60mm |5mm		|+
-abs flex|	250/90 +5fl		| 					|					|30mm |7mm		|+/-
+material|temp 				|  temp glass 		|min layer time  	|speed/fl|retract	|colling	|
+abs+ 	|	220/100 +5fl	| 					|10s lift head on	|60mm/30 |5mm		|-			|
+pla 	|	210/60 +5fl		|210/70 +5fl		| 					|60mm/15 |5mm		|+
+abs flex|	250/90 +5fl		|250/100 					|			|30mm/15 |7mm		|+/-
 
 
 C:\Program Files\Cura 2.6\resources\materials
+
+[3d] 
+GStart:
+G21 ;metric values
+G90 ;absolute positioning
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+G28 ;home
+G1 Z15.0 F9000 ;move the platform down 15mm
+G92 E0 ;zero the extruded length
+G1 F200 E7 ;extrude 7mm of feed stock
+G92 E0 ;zero the extruded length again
+G1 F9000
+
+GEnd:
+M150 R0 B 0 U255 ;green
+M104 S0 ;extruder heater off
+M140 S0 ;heated bed heater off
+M106 S0       ; shut down blower fan
+G91 ;relative positioning
+G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+G1 Z+5 E-5 F9000 ;move Z up a bit and retract filament even more
+G90 ;absolute positioning
+G0 X210 Y210 Z228 ;move to park position
+M84 ;steppers off
+M117 Waiting cooldown
+M109 R50.000000          ;wait fior  temperature to reach 40
+M117  Shutdown
+M81                  ;ShutDown PSU
+
+[cnc]
+GStart:
+M302 P1      ; disable cold extrusion checking
+G92 X0 Y0 Z0; set current pos as zero
+G1 Z5.0 F6000 ;Move the platform down 5mm
+
+GEnd:
+G1 Z5.0 F6000 ;Move the platform down 5mm
+
+
+[engraver]
+sw
+https://inkscape.org/release/inkscape-0.92.4/
+
+[cura]
+off nozzles
+* go to Help -> Show configuration folder
+* close cura
+* In the configuration folder, go to "definition_changes"
+* in that folder, find the *_settings.inst.cfg for your printer, and open it in a text editor
+* add the following line to the [values] section:
+machine_nozzle_temp_enabled = False
+* save the file
+* restart Cura
+You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
