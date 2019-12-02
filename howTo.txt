@@ -12,10 +12,18 @@ $vcgencmd otp_dump | grep 17:
 
 [engraver]
 sw
-https://inkscape.org/release/inkscape-0.92.4/
 
 https://www.autodesk.com/products/eagle/overview
+https://github.com/McNugget6750/pcb-gcode
+https://github.com/martin2250/OpenCNCPilot
+
 https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
+
+https://www.diymodules.org/eagle
+
+-https://inkscape.org/release/inkscape-0.92.4/
+-http://flatcam.org/
+
 =======
 [cura]
 off nozzles
