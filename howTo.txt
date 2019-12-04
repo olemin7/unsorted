@@ -3,13 +3,6 @@
 recipe.c.combine.pattern={recipe.hooks.linking.prelink.1.pattern} & 
 recipe.objcopy.hex.pattern={recipe.objcopy.hex.1.pattern}
 
-[raspberry][start from usb]
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md
-add program_usb_boot_mode=1 to  /boot/config.txt
-after reboot check if 
-$vcgencmd otp_dump | grep 17:
-17:3020000a
-
 [engraver]
 sw
 
@@ -39,3 +32,5 @@ You should now no longer be able to set temperatures in Cura, and the gcode shou
 =======
 [miniDlna]
 sudo vim /etc/minidlna.conf
+
+[etc]
