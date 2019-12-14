@@ -3,34 +3,10 @@
 recipe.c.combine.pattern={recipe.hooks.linking.prelink.1.pattern} & 
 recipe.objcopy.hex.pattern={recipe.objcopy.hex.1.pattern}
 
-[engraver]
-sw
-
-https://www.autodesk.com/products/eagle/overview
-https://github.com/McNugget6750/pcb-gcode
-https://github.com/martin2250/OpenCNCPilot
-
-https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
-
-https://www.diymodules.org/eagle
-
--https://inkscape.org/release/inkscape-0.92.4/
--http://flatcam.org/
-
-=======
-[cura]
-off nozzles
-* go to Help -> Show configuration folder
-* close cura
-* In the configuration folder, go to "definition_changes"
-* in that folder, find the *_settings.inst.cfg for your printer, and open it in a text editor
-* add the following line to the [values] section:
-machine_nozzle_temp_enabled = False
-* save the file
-* restart Cura
-You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
-=======
 [miniDlna]
 sudo vim /etc/minidlna.conf
+
+[Git Diff and Meld on Windows]
+You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable
 
 [etc]

@@ -28,12 +28,12 @@ G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
 G1 Z+5 E-5 F9000 ;move Z up a bit and retract filament even more
 G90 ;absolute positioning
-G0 X210 Y210 Z228 ;move to park position
+G28 X Y; park
 M84 ;steppers off
 M117 Waiting cooldown
 M109 R50.000000          ;wait fior  temperature to reach 40
 M117  Shutdown
-M81                  ;ShutDown PSU
+M81  ;ShutDown PSU
 
 [cnc]
 GStart:
@@ -47,8 +47,19 @@ G1 Z5.0 F6000 ;Move the platform down 5mm
 
 [engraver]
 sw
-https://inkscape.org/release/inkscape-0.92.4/
 
+https://www.autodesk.com/products/eagle/overview
+https://github.com/McNugget6750/pcb-gcode
+https://github.com/martin2250/OpenCNCPilot
+
+https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
+
+https://www.diymodules.org/eagle
+
+-https://inkscape.org/release/inkscape-0.92.4/
+-http://flatcam.org/
+
+=======
 [cura]
 off nozzles
 * go to Help -> Show configuration folder
@@ -60,3 +71,4 @@ machine_nozzle_temp_enabled = False
 * save the file
 * restart Cura
 You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
+=======
