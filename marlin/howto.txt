@@ -1,6 +1,7 @@
 material|temp 				|  temp glass 		|min layer time  	|speed/fl|retract	|colling	|
 abs+ 	|	220/100 +5fl	| 					|10s lift head on	|60mm/30 |5mm		|-			|
 pla 	|	210/60 +5fl		|210/70 +5fl		| 					|60mm/15 |5mm		|+
+pla+ 	|	  		        |220/80 (225/85)fl	| 					|60mm/15 |5mm		|+
 abs flex|	250/90 +5fl		|250/100 					|			|30mm/15 |7mm		|+/-
 
 

@@ -10,3 +10,6 @@ sudo vim /etc/minidlna.conf
 You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable
 
 [etc]
+
+posershell simlink
+New-Item -ItemType Junction -Path "webdav_air_pcb" -Target "D:\user\hobby\git\WebDAV_air\webdav_air_pcb"
