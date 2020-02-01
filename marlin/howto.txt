@@ -1,7 +1,7 @@
 material|temp 				|  temp glass 		|min layer time  	|speed/fl|retract	|colling	|
 abs+ 	|	220/100 +5fl	| 					|10s lift head on	|60mm/30 |5mm		|-			|
 pla 	|	210/60 +5fl		|210/70 +5fl		| 					|60mm/15 |5mm		|+
-pla+ 	|	  		        |220/80 (225/85)fl	| 					|60mm/15 |5mm		|+
+pla+ 	|	  		        |220/80 (225/85)fl	| 					|120mm/15 |5mm		|+
 abs flex|	250/90 +5fl		|250/100 					|			|30mm/15 |7mm		|+/-
 
 
@@ -21,7 +21,7 @@ G92 E0 ;zero the extruded length again
 G1 F9000
 
 GEnd:
-M150 R0 B 0 U255 ;green
+M150 R0 B0 U255 ;green
 M104 S0 ;extruder heater off
 M140 S0 ;heated bed heater off
 M106 S0       ; shut down blower fan
