@@ -1,7 +1,14 @@
+[eclipse]
+c/c++>Code Style >formater
+
 [eclipse][esp]
 {platform.txt}
 recipe.c.combine.pattern={recipe.hooks.linking.prelink.1.pattern} & 
 recipe.objcopy.hex.pattern={recipe.objcopy.hex.1.pattern}
+
+[arduino]
+http://downloads.arduino.cc/packages/package_index.json
+https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 
 [miniDlna]
 sudo vim /etc/minidlna.conf
