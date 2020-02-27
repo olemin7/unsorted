@@ -73,3 +73,6 @@ machine_nozzle_temp_enabled = False
 * restart Cura
 You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
 =======
+
+[build]
+platformio run -e megaatmega2560
