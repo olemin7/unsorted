@@ -75,4 +75,7 @@ You should now no longer be able to set temperatures in Cura, and the gcode shou
 =======
 
 [build]
+https://marlinfw.org/docs/basics/install_platformio_cli.html
+
 platformio run -e megaatmega2560
+platformio run -e megaatmega2560 –t upload
