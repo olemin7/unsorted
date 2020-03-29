@@ -1,7 +1,7 @@
 material|temp 		| Tfl glass |min layer time  	|speed/fl |retract	|colling	|
 abs+ 	|	220/100 | 			|10s lift head on	|60mm/30  |5mm		|-			|
-pla 	|	210/65 	| 215/75	| 					|120mm/15 |5mm		|+
-pla+ 	|	217/75  | 225/85	| 					|120mm/15 |5mm		|+
+pla 	|	210/65 	| 215/75	| 					|100mm/15 |5mm		|+
+pla+ 	|	217/75  | 225/85	| 					|100mm/15 |5mm		|+
 abs flex|	245/100 | 250/105			|			        |30mm/15  |7mm		|+/-
 
 
@@ -9,6 +9,8 @@ C:\Program Files\Cura 2.6\resources\materials
 
 [3d] 
 GStart:
+M118 A1 action:setStateSDcontrolMarlin
+M27 S30 ;print status
 G21 ;metric values
 G90 ;absolute positioning
 M82 ;set extruder to absolute mode
