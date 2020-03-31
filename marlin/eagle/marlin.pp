@@ -3,7 +3,7 @@
 // Often used options are at the top of the file.
 // Copied to gcode-defaults.h by the setup program.
 //
-// author=John Johnson
+// author=ominenko
 // description=Tries to be very compatible
 //
 
@@ -48,10 +48,10 @@ string DWELL    = "G4 " + PARAM + "%f" + EOL;
 //
 // M codes
 //
-string SPINDLE_ON     = "M3" + EOL + DWELL;
-string SPINDLE_OFF    = "M5" + EOL;
-string END_PROGRAM    = "M2" + EOL;
-string OPERATOR_PAUSE = "M6 ";
+string SPINDLE_ON     = ""; //"M3" + EOL + DWELL;
+string SPINDLE_OFF    = "";//"M5" + EOL;
+string END_PROGRAM    = "";//M2" + EOL;
+string OPERATOR_PAUSE = "M0 ";
 
 //
 // Spindle speed
@@ -111,9 +111,9 @@ string DRILL_HOLE =       RAPID + MOVE_XY + EOL
 // Tool change
 //
 string TOOL_CODE        = "T%02d ";
-string TOOL_MM_FORMAT   = "%1.3fmm";
+string TOOL_MM_FORMAT   = "%1.2fmm";
 string TOOL_INCH_FORMAT = "%1.4fin";
-string TOOL_CHANGE      = OPERATOR_PAUSE + TOOL_CODE + " ; " + FORMAT + EOL;
+string TOOL_CHANGE      = OPERATOR_PAUSE +"Set "+TOOL_CODE  + FORMAT + EOL;
 
 string TOOL_CHANGE_TABLE_HEADER = COMMENT_BEGIN + 
   " Tool|       Size       |  Min Sub |  Max Sub |   Count " + COMMENT_END + EOL;

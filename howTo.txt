@@ -1,11 +1,6 @@
 [eclipse]
 c/c++>Code Style >formater
 
-[eclipse][esp]
-{platform.txt}
-recipe.c.combine.pattern={recipe.hooks.linking.prelink.1.pattern} & 
-recipe.objcopy.hex.pattern={recipe.objcopy.hex.1.pattern}
-
 [arduino]
 http://downloads.arduino.cc/packages/package_index.json
 https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
@@ -40,4 +35,7 @@ New-Item -ItemType Junction -Path "webdav_air_pcb" -Target "D:\user\hobby\git\We
 #define BUTTON_A 12 
 
 #define DEAUTHER_DISPLAY SH1106Wire display = SH1106Wire(0x3c, D2, D1); // for 1.3" OLED
+
+[eagle]
+New-Item -ItemType SymbolicLink -Name "marlin.pp" -Target "D:\user\hobby\git\unsorted\marlin\eagle\marlin.pp"
 
