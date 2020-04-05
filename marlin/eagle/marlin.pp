@@ -48,9 +48,10 @@ string DWELL    = "G4 " + PARAM + "%f" + EOL;
 //
 // M codes
 //
+string BEG_PROGRAM    = "M121"+ EOL +"M150 B255 P255 R255 U255";//disableendstop
 string SPINDLE_ON     = ""; //"M3" + EOL + DWELL;
 string SPINDLE_OFF    = "";//"M5" + EOL;
-string END_PROGRAM    = "";//M2" + EOL;
+string END_PROGRAM    = "M150 P255 U255";
 string OPERATOR_PAUSE = "M0 ";
 
 //
