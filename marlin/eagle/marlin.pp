@@ -39,7 +39,7 @@ string ABSOLUTE_MODE        = COMMENT_BEGIN + "Absolute Coordinates" + COMMENT_E
 //
 // G codes
 //
-string RAPID    = "G0 ";
+string RAPID    = "G0 F360 ";
 string FEED     = "G1 ";
 string ARC_CW   = "G2 ";
 string ARC_CCW  = "G3 ";

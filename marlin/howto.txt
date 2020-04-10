@@ -4,8 +4,13 @@ pla 	|	210/65 	| 215/75	| 					|100mm/15 |5mm		|+
 pla+ 	|	217/75  | 225/85	| 					|100mm/15 |5mm		|+
 abs flex|	245/100 | 250/105			|			        |30mm/15  |7mm		|+/-
 
-
 C:\Program Files\Cura 2.6\resources\materials
+
+[pcb]
+Z doun -0.2
+15000 rpm
+bit 02
+speed xyz F120.00
 
 [3d] 
 GStart:
@@ -20,6 +25,7 @@ G1 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E7 ;extrude 7mm of feed stock
 G92 E0 ;zero the extruded length again
+G1 F200 E-3
 G1 F9000
 
 GEnd:
