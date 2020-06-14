@@ -1,8 +1,8 @@
 material|temp 		| Tfl glass |min layer time  	|speed/fl |retract	|colling	|
-abs+ 	|	220/100 | 			|10s lift head on	|60mm/30  |5mm		|-			|
+abs+ 	|	215/95  | 220/100	|10s lift head on	|80mm/15  |6mm		|-			|
 pla 	|	210/65 	| 215/75	| 					|100mm/15 |5mm		|+
 pla+ 	|	217/75  | 225/85	| 					|100mm/15 |5mm		|+
-abs flex|	245/100 | 250/105			|			        |30mm/15  |7mm		|+/-
+abs flex|	245/100 | 250/105	|			        |30mm/15  |8mm		|+/-
 
 C:\Program Files\Cura 2.6\resources\materials
 
@@ -21,9 +21,10 @@ G90 ;absolute positioning
 M82 ;set extruder to absolute mode
 M107 ;start with the fan off
 G28 ;home
-G1 Z15.0 F9000 ;move the platform down 15mm
+G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E7 ;extrude 7mm of feed stock
+G0 X100 Y100 F1500 ;move center
 G92 E0 ;zero the extruded length again
 G1 F200 E-3
 G1 F9000
@@ -69,21 +70,31 @@ https://www.diymodules.org/eagle
 -http://flatcam.org/
 
 =======
-[cura]
-off nozzles
-* go to Help -> Show configuration folder
-* close cura
-* In the configuration folder, go to "definition_changes"
-* in that folder, find the *_settings.inst.cfg for your printer, and open it in a text editor
-* add the following line to the [values] section:
-machine_nozzle_temp_enabled = False
-* save the file
-* restart Cura
-You should now no longer be able to set temperatures in Cura, and the gcode should also not have temperatures in it anymore.
-=======
 
 [build]
 https://marlinfw.org/docs/basics/install_platformio_cli.html
+source deactivate
+source ~/.platformio/penv/bin/activate
+platformio run -e mega2560
 
-platformio run -e megaatmega2560
-platformio run -e megaatmega2560 –t upload
+platformio run -e mega2560 –t upload
+
+[octoprint]
+octoprint.org
+
+-> plugin
+ipOnConnect
+https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip
+
+[dev plugin]
+sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
+tail -f ~/.octoprint/logs/octoprint.log
+
+ssh -p '22' 'pi@192.168.1.81'
+
+https://docs.octoprint.org/en/master/plugins/gettingstarted.html
+source ~/oprint/bin/activate
+python setup.py develop
+sudo service octoprint restart
+
+https://docs.octoprint.org/en/master/plugins/helpers.html~/.octoprint/config.yaml

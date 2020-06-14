@@ -1,5 +1,6 @@
 [eclipse]
 c/c++>Code Style >formater
+c/c++>Editor>sav Action
 
 [arduino]
 http://downloads.arduino.cc/packages/package_index.json
