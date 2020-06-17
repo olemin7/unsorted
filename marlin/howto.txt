@@ -77,7 +77,7 @@ source deactivate
 source ~/.platformio/penv/bin/activate
 platformio run -e mega2560
 
-platformio run -e mega2560 –t upload
+platformio run -e mega2560 --target upload
 
 [octoprint]
 octoprint.org
@@ -85,6 +85,7 @@ octoprint.org
 -> plugin
 ipOnConnect
 https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip
+pip install "https://github.com/cesarvandevelde/OctoPrint-M73Progress/archive/master.zip"
 
 [dev plugin]
 sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
@@ -98,3 +99,6 @@ python setup.py develop
 sudo service octoprint restart
 
 https://docs.octoprint.org/en/master/plugins/helpers.html~/.octoprint/config.yaml
+
+stty -F /dev/ttyACM0 -hupcl
+which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
