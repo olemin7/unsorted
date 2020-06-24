@@ -14,20 +14,19 @@ speed xyz F120.00
 
 [3d] 
 GStart:
-M118 A1 action:setStateSDcontrolMarlin
-M27 S30 ;print status
 G21 ;metric values
 G90 ;absolute positioning
 M82 ;set extruder to absolute mode
-M107 ;start with the fan off
 G28 ;home
+M420 S1;on bed level
+;M211 S0;SW Disable  Endstops
+M121 ;Disable HW  Endstops
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E7 ;extrude 7mm of feed stock
 G0 X100 Y100 F1500 ;move center
 G92 E0 ;zero the extruded length again
 G1 F200 E-3
-G1 F9000
 
 GEnd:
 M150 R0 B0 U255 ;green
@@ -38,6 +37,7 @@ G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
 G1 Z+5 E-5 F9000 ;move Z up a bit and retract filament even more
 G90 ;absolute positioning
+M120 ; HW Enable Endstops
 G28 X Y; park
 M84 ;steppers off
 M117 Waiting cooldown
@@ -54,6 +54,22 @@ G1 Z5.0 F6000 ;Move the platform down 5mm
 GEnd:
 G1 Z5.0 F6000 ;Move the platform down 5mm
 
+
+[bed level]
+G90 ;absolute positioning
+M503 ;info eeprom
+M851 Z0; reset offset
+G28
+G29 T1;start bed level
+G0 Z10 F500
+G0 X100 Y100 F5000
+M121;HW Disable  Endstops
+M211 S0;SW Disable  Endstops
+;nozzle to plate
+M114
+M851 Z-0.4; set z probe offset
+M500;eeprom save
+M420 S0
 
 [engraver]
 sw
@@ -72,6 +88,11 @@ https://www.diymodules.org/eagle
 =======
 
 [build]
+ln -f ../unsorted/marlin/Configuration.h ./Marlin/Configuration.h 
+ln -f ../unsorted/marlin/Configuration_adv.h ./Marlin/Configuration_adv.h 
+ln -f ../unsorted/marlin/endstops.cpp ./Marlin/src/module/endstops.cpp
+
+
 https://marlinfw.org/docs/basics/install_platformio_cli.html
 source deactivate
 source ~/.platformio/penv/bin/activate
@@ -79,14 +100,16 @@ platformio run -e mega2560
 
 platformio run -e mega2560 --target upload
 
+
 [octoprint]
 octoprint.org
 
 -> plugin
 pip install "https://github.com/jneilliii/OctoPrint-ipOnConnect/archive/master.zip"
-https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip
+pip install "https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip"
 pip install "https://github.com/cesarvandevelde/OctoPrint-M73Progress/archive/master.zip"
 pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
+pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/master.zip"
 
 [dev plugin]
 sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
