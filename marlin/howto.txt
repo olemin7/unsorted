@@ -21,6 +21,7 @@ G28 ;home
 M420 S1;on bed level
 ;M211 S0;SW Disable  Endstops
 M121 ;Disable HW  Endstops
+M290 P0 Z0.2 ;Babystep
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E7 ;extrude 7mm of feed stock
@@ -56,20 +57,21 @@ G1 Z5.0 F6000 ;Move the platform down 5mm
 
 
 [bed level]
-G90 ;absolute positioning
-M503 ;info eeprom
 M851 Z0; reset offset
 G28
-G29 T1;start bed level
-G0 Z10 F500
+M503 ;info eeprom
+M420 S0
+G90 ;absolute positioning
 G0 X100 Y100 F5000
+G91 ;relative positioning
+G38.2 F60 Z-15
 M121;HW Disable  Endstops
 M211 S0;SW Disable  Endstops
-;nozzle to plate
-M114
-M851 Z-0.4; set z probe offset
+;babysteps noozle to paper
+G28 Z
+M503 ;info eeprom
+G29 T1;start bed level
 M500;eeprom save
-M420 S0
 
 [engraver]
 sw
