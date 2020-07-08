@@ -116,6 +116,7 @@ pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/mast
 [dev plugin]
 sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
+echo "">~/.octoprint/logs/octoprint.log
 
 ssh -p '22' 'pi@192.168.1.81'
 
@@ -128,3 +129,8 @@ https://docs.octoprint.org/en/master/plugins/helpers.html~/.octoprint/config.yam
 
 stty -F /dev/ttyACM0 -hupcl
 which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
+3275 
+
+
+[dev]
+https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octoprint_metadatapreprocessor/__init__.py
