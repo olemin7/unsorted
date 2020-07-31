@@ -1,8 +1,8 @@
-material|temp 		| Tfl glass |min layer time  	|speed/fl |retract	|colling	|
-abs+ 	|	215/95  | 220/100	|10s lift head on	|80mm/15  |6mm		|-			|
-pla 	|	210/65 	| 215/75	| 					|100mm/15 |5mm		|+
-pla+ 	|	217/75  | 225/85	| 					|100mm/15 |5mm		|+
-abs flex|	245/100 | 250/105	|			        |30mm/15  |8mm		|+/-
+material|temp 		| Tfl glass |min layer time  		|speed/fl |retract	|colling	|
+abs+ 	|	215/95  | 220/100	|10s/10 lift head on	|80mm/15  |6mm		|-			|
+pla 	|	210/65 	| 215/75	| 						|100mm/15 |5mm		|+
+pla+ 	|	217/75  | 225/85	| 						|100mm/15 |5mm		|+
+abs flex|	245/100 | 250/105	|			        	|30mm/15  |8mm		|+/-
 
 C:\Program Files\Cura 2.6\resources\materials
 
@@ -33,7 +33,7 @@ GEnd:
 M150 R0 B0 U255 ;green
 M104 S0 ;extruder heater off
 M140 S0 ;heated bed heater off
-M106 S0       ; shut down blower fan
+M106 S0 ;shut down blower fan
 G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
 G1 Z+5 E-5 F9000 ;move Z up a bit and retract filament even more
@@ -41,10 +41,6 @@ G90 ;absolute positioning
 M120 ; HW Enable Endstops
 G28 X Y; park
 M84 ;steppers off
-M117 Waiting cooldown
-M109 R50.000000          ;wait fior  temperature to reach 40
-M117  Shutdown
-M81  ;ShutDown PSU
 
 [cnc]
 GStart:
@@ -105,20 +101,23 @@ platformio run -e mega2560 --target upload
 
 [octoprint]
 octoprint.org
+https://docs.octoprint.org/en/master/plugins/gettingstarted.html
 
 -> plugin
+source ~/oprint/bin/activate
 pip install "https://github.com/jneilliii/OctoPrint-ipOnConnect/archive/master.zip"
 pip install "https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip"
 pip install "https://github.com/cesarvandevelde/OctoPrint-M73Progress/archive/master.zip"
-pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
+-pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
 pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/master.zip"
+pip install "https://github.com/Sebclem/OctoPrint-SimpleEmergencyStop/archive/master.zip"
 
 [dev plugin]
 sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
 echo "">~/.octoprint/logs/octoprint.log
 
-ssh -p '22' 'pi@192.168.1.81'
+ssh -p '22' pi@192.168.1.81
 
 https://docs.octoprint.org/en/master/plugins/gettingstarted.html
 source ~/oprint/bin/activate

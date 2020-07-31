@@ -19,11 +19,36 @@ sudo systemctl start apcupsd
 https://zoneminder.com/
  /etc/mysql/my.cnf
 sudo vimo /etc/php/7.0/apache2/php.ini
+-->
 	[Date]
 	date.timezone = Europe/Kiev
+<--
+
+ln -sf /var/cache/zoneminder/events/ /home/amin/Dropbox/zoneminder
+sudo chown www-data:www-data -h events
+
+/var/dropbox$ sudo /etc/init.d/apache2 restart
+
+[dropbox]
+getfacl
+incron
+setfacl
+
+cd /usr/share/doc/lsyncd/examples/
+/etc/lsyncd/lsyncd.conf.lua
+sudo systemctl enable lsyncd
+sudo systemctl start lsyncd
+sudo systemctl status lsyncd
 
 [Git Diff and Meld on Windows]
 You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable
+sudo service zoneminder restart
+
+[utorrent]
+>>client
+	uTorrent WebUI
+	8080
+	/gui/
 
 [etc]
 
@@ -39,4 +64,7 @@ New-Item -ItemType Junction -Path "webdav_air_pcb" -Target "D:\user\hobby\git\We
 
 [eagle]
 New-Item -ItemType SymbolicLink -Name "marlin.pp" -Target "D:\user\hobby\git\unsorted\marlin\eagle\marlin.pp"
+
+[smart Watch q50]
+pw,123456,apn,www.umc.ua#
 
