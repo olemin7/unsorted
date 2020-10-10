@@ -69,6 +69,16 @@ M503 ;info eeprom
 G29 T1;start bed level
 M500;eeprom save
 
+[pid calibration]
+M503; show
+Recv: echo:; PID settings:
+Recv: echo:  M301 P15.58 I0.73 D83.28
+Recv: echo:  M304 P52.15 I8.97 D202.22
+
+M303 C5 E0 S220 U1
+M303 C5 E-1 S100 U1
+
+M500 ;save
 [engraver]
 sw
 
@@ -86,6 +96,13 @@ https://www.diymodules.org/eagle
 =======
 
 [build]
+git remote add upstream https://github.com/MarlinFirmware/Marlin.git
+git fetch upstream
+git rebase upstream/2.0.x
+git difftool upstream/2.0.x 
+
+
+
 ln -f ../unsorted/marlin/Configuration.h ./Marlin/Configuration.h 
 ln -f ../unsorted/marlin/Configuration_adv.h ./Marlin/Configuration_adv.h 
 ln -f ../unsorted/marlin/endstops.cpp ./Marlin/src/module/endstops.cpp
