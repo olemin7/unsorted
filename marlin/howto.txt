@@ -21,10 +21,10 @@ G28 ;home
 M420 S1;on bed level
 ;M211 S0;SW Disable  Endstops
 M121 ;Disable HW  Endstops
-M290 P0 Z0.2 ;Babystep
+M290 P0 Z0.25 ;Babystep, not stored in eproms
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
-G1 F200 E7 ;extrude 7mm of feed stock
+G1 F200 E7 ;extrude 7mm of feed stocks
 G0 X100 Y100 F1500 ;move center
 G92 E0 ;zero the extruded length again
 G1 F200 E-3
