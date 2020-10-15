@@ -115,6 +115,9 @@ platformio run -e mega2560
 
 platformio run -e mega2560 --target upload
 
+[vref]
+8401  1.6A
+4401  1.2A
 
 [octoprint]
 octoprint.org
