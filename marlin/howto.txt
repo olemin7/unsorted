@@ -21,7 +21,8 @@ G28 ;home
 M420 S1;on bed level
 ;M211 S0;SW Disable  Endstops
 M121 ;Disable HW  Endstops
-M290 P0 Z0.25 ;Babystep, not stored in eproms
+M118 //action:afterHome
+;M290 P0 Z0.25 ;Babystep, not stored in eproms
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E7 ;extrude 7mm of feed stocks
@@ -98,7 +99,7 @@ https://www.diymodules.org/eagle
 [build]
 git remote add upstream https://github.com/MarlinFirmware/Marlin.git
 git fetch upstream
-git rebase upstream/2.0.x
+git merge upstream/2.0.x
 git difftool upstream/2.0.x 
 
 
@@ -131,6 +132,7 @@ pip install "https://github.com/cesarvandevelde/OctoPrint-M73Progress/archive/ma
 -pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
 pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/master.zip"
 pip install "https://github.com/Sebclem/OctoPrint-SimpleEmergencyStop/archive/master.zip"
+pip install "https://github.com/benlye/OctoPrint-ActionCommandsPlugin/archive/master.zip"
 
 [dev plugin]
 sshfs pi@192.168.1.81:/home/pi -p 22 ~/mnt
