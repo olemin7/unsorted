@@ -34,10 +34,8 @@ M140 S0 ;heated bed heater off
 M106 S0 ;shut down blower fan
 G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
-G1 Z+5 E-5 F9000 ;move Z up a bit and retract filament even more
+G1 Z+15 E-5 F9000 ;move Z up a bit and retract filament even more
 G90 ;absolute positioning
-M120 ; HW Enable Endstops
-G28 X Y; park
 M84 ;steppers off
 
 [cnc]
