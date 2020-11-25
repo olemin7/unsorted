@@ -15,17 +15,15 @@ speed xyz F120.00
 [3d] 
 GStart:
 G21 ;metric values
-G90 ;absolute positioning
 G28 ;home
+M118 //action:nozzleClean
 M420 S1;on bed level
 M118 //action:afterHome
-G91 ;relative positioning
-G1 F200 E15 ;extrude
-G0 Z15.0 F9000 ;move the platform down 15mm
 G90 ;absolute positioning
+G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E-3
-G0 X100 Y100 F1500 ;move center
+G0 X100 Y100 F9000 ;move center
 
 GEnd:
 M150 R0 B0 U255 ;green
@@ -151,3 +149,7 @@ which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
 
 [dev]
 https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octoprint_metadatapreprocessor/__init__.py
+
+[ocptoprint:action]
+afterHome M290 P0 Z0.7 
+nozzleClean G90;G0 X1 Y-13 F1500;G0 Z0 F1500;G91;G1 F200 E20;G0 Y10 F9000;G0 Z15 F9000;
