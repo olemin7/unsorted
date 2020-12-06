@@ -91,6 +91,11 @@ M500 ;save
 8401  1.6A
 4401  1.2A
 
+[tmc2226]
+as 2209
+https://www.instructables.com/UART-This-Serial-Control-of-Stepper-Motors-With-th/
+M501
+
 [engraver]
 sw
 
@@ -138,10 +143,11 @@ source ~/oprint/bin/activate
 pip install "https://github.com/jneilliii/OctoPrint-ipOnConnect/archive/master.zip"
 pip install "https://github.com/kantlivelong/OctoPrint-PSUControl/archive/master.zip"
 pip install "https://github.com/cesarvandevelde/OctoPrint-M73Progress/archive/master.zip"
--pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
+pip install "https://github.com/jneilliii/OctoPrint-BedLevelVisualizer/archive/master.zip"
 pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/master.zip"
 pip install "https://github.com/Sebclem/OctoPrint-SimpleEmergencyStop/archive/master.zip"
 pip install "https://github.com/benlye/OctoPrint-ActionCommandsPlugin/archive/master.zip"
+pip install "https://github.com/costas-basdekis/MarlinGcodeDocumentation/archive/master.zip"
 
 [dev plugin]
 sshfs pi@192.168.1.48:/home/pi -p 22 ~/mnt
