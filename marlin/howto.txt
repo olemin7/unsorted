@@ -1,6 +1,6 @@
 material|temp 		| glass |cover 	|min layer time  		|speed/fl |retract	|colling	|
-abs+ 	|	215     |  100	|	85	|10s/10 lift head on	|80mm/15  |6mm		|-			|
-pla 	|	210/65 	| 215/s75	| 						|100mm/15 |5mm		|+
+abs+ 	|	215     |  100	|	65	|10s/10 lift head on	|80mm/15  |6mm		|-			|
+pla 	|	210/65 	| 75	| 	50	|	        			|100mm/15 |5mm		|+
 pla+ 	|	217/75  | 225/85	| 						|100mm/15 |5mm		|+
 abs flex|	245/100 | 250/105	|			        	|30mm/15  |8mm		|+/-
 

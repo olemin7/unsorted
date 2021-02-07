@@ -4,3 +4,5 @@ add program_usb_boot_mode=1 to  /boot/config.txt
 after reboot check if 
 $vcgencmd otp_dump | grep 17:
 17:3020000a
+
+https://docs.linuxconsulting.mn.it/notes/remmina-vnc-raspberry

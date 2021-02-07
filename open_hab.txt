@@ -1,0 +1,81 @@
+[install] 
+ sudo dpkg -i zulu11.45.27-ca-jdk11.0.10-linux_amd64.deb 
+
+https://www.openhab.org/download/
+
+[openHAB] Please use the following commands to launch openHAB on a system restart.
+            sudo /bin/systemctl daemon-reload
+            sudo /bin/systemctl enable openhab.service
+
+[openHAB] You can start openHAB manually by executing the command:
+            sudo /bin/systemctl start openhab.service
+            sudo /bin/systemctl stop openhab.service
+            sudo /bin/systemctl restart openhab.service
+
+openhab-cli console
+Add-ons
+feature:list | grep ^openhab
+feature:list | grep Started
+feature:install openhab-persistence-rrd4j
+openhab-binding-ntp
+openhab-transformation-jsonpath
+openhab-binding-mqtt     
+
+[oh port]
+sudo /bin/systemctl stop openhab.service
+sudo vim /etc/default/openhab
+
+https://openhab.org/docs/tutorial/things_advanced.html
+
+openhab-cli showlogs
+tail -f /var/log/openhab/openhab.log
+sudo tail -f /var/log/mosquitto/mosquitto.log
+
+[mqtt]
+https://gist.github.com/mirhec/27e8df1b2ff52196fabb0f9ea5f4313f
+
+sudo apt-get install mosquitto mosquitto-clients
+
+sudo vim /etc/mosquitto/mosquitto.conf 
+add listener 1883
+sudo /etc/init.d/mosquitto restart
+
+[mqtt test]
+one terminal
+mosquitto_sub -d -t hello/world
+Connect to another ssh session and run
+mosquitto_pub -d -t hello/world -m "Hello from terminal window 2!"
+
+
+
+[dev]
+
+sshfs family@192.168.1.104:/etc/openhab/ -p 22 ~/mnt
+https://github.com/cyberkov/openhab-vim
+sudo chmod 666 
+
+[chron]
+//  Strategy name
+//  |              Seconds
+//  |              |    Minutes
+//  |              |    |   Hours
+//  |              |    |   |   Day of month
+//  |              |    |   |   |   Month
+//  |              |    |   |   |   |   Day of week
+//  |              |    |   |   |   |   |   Year
+    every5sec   : "0/5  *   *   *   *   ?"
+    every15sec  : "0/15 *   *   *   *   ?"
+    everyMinute : "0    *   *   *   *   ?"
+    every30min  : "0    30  *   *   *   ?"
+    everyHour   : "0    0   *   *   *   ?"
+    everyDay    : "0    0   0   *   *   ?"
+
+[chart]
+    https://community.openhab.org/t/influxdb-grafana-persistence-and-graphing/13761
+    https://archive.docs.influxdata.com/influxdb/v0.13/introduction/installation/
+    influx -username admin -password 0123456 -host localhost
+
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/enterprise/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+sudo apt-get update
+sudo apt-get install grafana-enterprise

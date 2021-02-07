@@ -6,6 +6,11 @@ c/c++>Editor>sav Action
 http://downloads.arduino.cc/packages/package_index.json
 https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 
+[platformio]
+source ~/.platformio/penv/bin/activate
+pio project init --ide eclipse
+
+
 [miniDlna]
 sudo vim /etc/minidlna.conf
 
