@@ -14,6 +14,8 @@ speed xyz F120.00
 
 [3d] 
 GStart:
+M80 ; poweron
+M501 ; restope EEPROM workaarount for TMC
 G21 ;metric values
 G28 ;home
 M118 //action:nozzleClean
@@ -23,7 +25,6 @@ G90 ;absolute positioning
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
 G1 F200 E-3
-G0 X100 Y100 F9000 ;move center
 
 GEnd:
 M150 R0 B0 U255 ;green
@@ -38,6 +39,8 @@ M84 ;steppers off
 
 [cnc]
 GStart:
+M80 ; poweron
+M501 ; restope EEPROM workaarount for TMC
 M302 P1      ; disable cold extrusion checking
 G92 X0 Y0 Z0; set current pos as zero
 G1 Z5.0 F6000 ;Move the platform down 5mm
@@ -173,4 +176,4 @@ https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octop
 
 [ocptoprint:action]
 afterHome M290 P0 Z0.7 
-nozzleClean G90;G0 X1 Y-13 F1500;G0 Z0 F1500;G91;G1 F200 E20;G0 Y10 F9000;G0 Z15 F9000;
+nozzleClean G90;G0 X1 Y-11 F1500;G0 Z3 F1500;G91;G1 F50 E15;G0 E-3 F20;G1 Y10 Z1 F500;G90;G0 Z15 F9000;G0 X20 Y20 F9000
