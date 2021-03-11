@@ -18,9 +18,9 @@ M80 ; poweron
 M501 ; restope EEPROM workaarount for TMC
 G21 ;metric values
 G28 ;home
+M118 //action:afterHome
 M118 //action:nozzleClean
 M420 S1;on bed level
-M118 //action:afterHome
 G90 ;absolute positioning
 G0 Z15.0 F9000 ;move the platform down 15mm
 G92 E0 ;zero the extruded length
@@ -93,10 +93,12 @@ M500 ;save
 
 [z stepper]
 M501 ; restope EEPROM workaarount for TMC
-set probe coordinate
+//M851  ; ajust probe pos
+//set probe coordinate
 M422 S1 X20 Y180
 M422 S2 X190 Y100
 G34 I1
+M666 Z
 
 [vref]
 8401  1.6A
@@ -106,6 +108,11 @@ G34 I1
 as 2209
 https://www.instructables.com/UART-This-Serial-Control-of-Stepper-Motors-With-th/
 M501
+
+[display]
+#define ST7920_DELAY_1 DELAY_NS(50)
+#define ST7920_DELAY_2 DELAY_NS(188)
+#define ST7920_DELAY_3 DELAY_NS(50)
 
 [engraver]
 sw
@@ -176,5 +183,6 @@ which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
 https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octoprint_metadatapreprocessor/__init__.py
 
 [ocptoprint:action]
-afterHome M290 P0 Z0.7 
-nozzleClean G90;G0 X1 Y-11 F1500;G0 Z3 F1500;G91;G1 F50 E15;G0 E-3 F20;G1 Y10 Z1 F500;G90;G0 Z15 F9000;G0 X20 Y20 F9000
+afterHome M290 P0 Z0.7;M666 Z
+nozzleClean 
+G90;G0 Z10 F1500;G0 X0 Y-15 ;G0 Z5 ;G91;G1 F50 E15;G0 E-3 F20;G1 Y10 Z1 F500;G90;G0 Z15 F9000;G0 X30 Y30 F9000
