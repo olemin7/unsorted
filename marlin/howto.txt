@@ -50,6 +50,7 @@ G1 Z5.0 F6000 ;Move the platform down 5mm
 
 
 [bed level]
+M501 ; restope EEPROM workaarount for TMC
 M851 Z0; reset offset
 G28
 M503 ;info eeprom
@@ -90,6 +91,13 @@ M114; Get Current Position
 M303 C10 E0 S215 U1 
 M500 ;save
 
+[z stepper]
+M501 ; restope EEPROM workaarount for TMC
+set probe coordinate
+M422 S1 X20 Y180
+M422 S2 X190 Y100
+G34 I1
+
 [vref]
 8401  1.6A
 4401  1.2A
@@ -120,13 +128,6 @@ git remote add upstream https://github.com/MarlinFirmware/Marlin.git
 git fetch upstream
 git merge upstream/2.0.x
 git difftool upstream/2.0.x 
-
-
-
-ln -f ../unsorted/marlin/Configuration.h ./Marlin/Configuration.h 
-ln -f ../unsorted/marlin/Configuration_adv.h ./Marlin/Configuration_adv.h 
-ln -f ../unsorted/marlin/endstops.cpp ./Marlin/src/module/endstops.cpp
-
 
 https://marlinfw.org/docs/basics/install_platformio_cli.html
 source deactivate
