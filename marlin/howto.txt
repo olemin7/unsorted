@@ -50,9 +50,9 @@ G1 Z5.0 F6000 ;Move the platform down 5mm
 
 
 [bed level]
-M501 ; restope EEPROM workaarount for TMC
-M851 Z0; reset offset
-G28
+M118 //action:beforeHome
+g28
+M118 //action:afterHome
 M503 ;info eeprom
 M420 S0
 G90 ;absolute positioning
@@ -65,6 +65,7 @@ M211 S0;SW Disable  Endstops
 G28 Z
 M503 ;info eeprom
 G29 T1;start bed level
+M666 Z
 M500;eeprom save
 
 [pid calibration]
@@ -92,12 +93,13 @@ M303 C10 E0 S215 U1
 M500 ;save
 
 [z stepper]
-M501 ; restope EEPROM workaarount for TMC
-//M851  ; ajust probe pos
-//set probe coordinate
-M422 S1 X20 Y180
-M422 S2 X190 Y100
-G34 I1
+M118 //action:beforeHome
+g28
+M118 //action:afterHome
+g90
+g0 X25 Y175 F2500
+g0 X210 Y100 F2500
+g90
 M666 Z
 
 [vref]
@@ -183,6 +185,11 @@ which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
 https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octoprint_metadatapreprocessor/__init__.py
 
 [ocptoprint:action]
-afterHome M290 P0 Z0.7;M666 Z
+beforeHome
+M501
+
+afterHome 
+M290 P0 Z0.7
+
 nozzleClean 
 G90;G0 Z10 F1500;G0 X0 Y-15 ;G0 Z5 ;G91;G1 F50 E15;G0 E-3 F20;G1 Y10 Z1 F500;G90;G0 Z15 F9000;G0 X30 Y30 F9000
