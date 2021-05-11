@@ -71,9 +71,8 @@ sudo chmod 666
     everyDay    : "0    0   0   *   *   ?"
 
 [chart]
-    https://community.openhab.org/t/influxdb-grafana-persistence-and-graphing/13761
-    https://archive.docs.influxdata.com/influxdb/v0.13/introduction/installation/
-    influx -username admin -password 0123456 -host localhost
+
+https://www.openhab.org/docs/ui/components/oh-aggregate-series.html
 
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/enterprise/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list

@@ -1,0 +1,58 @@
+
+[ubuntu]
+https://www.linuxbabe.com/ubuntu/upgrade-ubuntu-18-04-to-ubuntu-20-04
+
+[platformio]
+source ~/.platformio/penv/bin/activate
+pio project init --ide eclipse
+
+
+[miniDlna]
+sudo vim /etc/minidlna.conf
+
+[apc]
+https://help.ubuntu.com/community/apcupsd
+sudo vim /etc/apcupsd/apcupsd.conf
+sudo nano /etc/default/apcupsd
+sudo systemctl start apcupsd
+
+
+[zoneminder]
+https://zoneminder.com/
+ /etc/mysql/my.cnf
+sudo vimo /etc/php/7.0/apache2/php.ini
+-->
+	[Date]
+	date.timezone = Europe/Kiev
+<--
+
+ln -sf /var/cache/zoneminder/events/ /home/amin/Dropbox/zoneminder
+sudo chown www-data:www-data -h events
+
+/var/dropbox$ sudo /etc/init.d/apache2 restart
+
+[dropbox]
+getfacl
+incron
+setfacl
+
+cd /usr/share/doc/lsyncd/examples/
+/etc/lsyncd/lsyncd.conf.lua
+sudo systemctl enable lsyncd
+sudo systemctl start lsyncd
+sudo systemctl status lsyncd
+
+[Git Diff and Meld on Windows]
+You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable
+sudo service zoneminder restart
+
+[utorrent]
+>>client
+	uTorrent WebUI
+	8080
+	/gui/
+
+[etc]
+
+posershell simlink
+New-Item -ItemType Junction -Path "webdav_air_pcb" -Target "D:\user\hobby\git\WebDAV_air\webdav_air_pcb"

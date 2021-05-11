@@ -1,0 +1,76 @@
+config:
+  chartType: day
+  label: outdoor_today_tomorrow
+  sidebar: true
+slots:
+  grid:
+    - component: oh-chart-grid
+      config: {}
+  xAxis:
+    - component: oh-category-axis
+      config:
+        gridIndex: 0
+        categoryType: day
+        weekdayFormat: default
+        monthFormat: default
+  yAxis:
+    - component: oh-value-axis
+      config:
+        gridIndex: 0
+  series:
+    - component: oh-aggregate-series
+      config:
+        name: Today
+        gridIndex: 0
+        xAxisIndex: 0
+        yAxisIndex: 0
+        type: line
+        areaStyle:
+          opacity: 0.2
+          color:
+            type: linear
+            x: 0
+            y: 0
+            x2: 0
+            y2: 1
+            colorStops:
+              - offset: 0
+                color: red
+              - offset: 1
+                color: blue
+            global: false
+        item: weather_outdoors_temperature
+        dimension1: hour
+        smooth: true
+        markPoint:
+          data:
+            - type: max
+            - type: min
+    - component: oh-aggregate-series
+      config:
+        name: Yesterday
+        gridIndex: 0
+        xAxisIndex: 0
+        yAxisIndex: 0
+        type: line
+        item: weather_outdoors_temperature
+        dimension1: hour
+        offsetAmount: 1
+        offsetUnit: day
+        smooth: true
+        lineStyle:
+          opacity: 0.2
+        showSymbol: false
+        markPoint:
+          data:
+            - type: max
+            - type: min
+  tooltip:
+    - component: oh-chart-tooltip
+      config:
+        show: true
+  legend:
+    - component: oh-chart-legend
+      config:
+        show: true
+        bottom: "10"

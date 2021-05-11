@@ -40,12 +40,14 @@ M84 ;steppers off
 [cnc]
 GStart:
 M80 ; poweron
-M501 ; restope EEPROM workaarount for TMC
+M118 //action:beforeHome
+M150 R0 B0 U255 ;green
 M302 P1      ; disable cold extrusion checking
 G1 Z5.0 F6000 ;Move the platform down 5mm
 
 GEnd:
 G1 Z5.0 F6000 ;Move the platform down 5mm
+M150 R0 B0 U255 ;green
 
 
 [bed level]
@@ -61,6 +63,7 @@ G38.2 F60 Z-15
 M121;HW Disable  Endstops
 M211 S0;SW Disable  Endstops
 ;babysteps noozle to paper
+
 G28 Z
 M503 ;info eeprom
 G29 T1;start bed level
@@ -73,8 +76,8 @@ Recv: echo:; PID settings:
 Recv: echo:  M301 P15.58 I0.73 D83.28
 Recv: echo:  M304 P52.15 I8.97 D202.22
 
-M303 C5 E0 S210 U1
-M303 C5 E-1 S100 U1
+M303 C7 E0 S210 U1
+M303 C7 E-1 S100 U1
 
 M500 ;save
 
@@ -141,7 +144,9 @@ git fetch upstream
 git merge upstream/2.0.x
 git difftool upstream/2.0.x 
 
+https://docs.platformio.org/en/latest/core/installation.html#super-quick-mac-linux
 https://marlinfw.org/docs/basics/install_platformio_cli.html
+
 source deactivate
 source ~/.platformio/penv/bin/activate
 C:\Users\family\.platformio\penv\Scripts\activate
@@ -166,6 +171,7 @@ pip install "https://github.com/benlye/OctoPrint-ActionCommandsPlugin/archive/ma
 pip install "https://github.com/costas-basdekis/MarlinGcodeDocumentation/archive/master.zip"
 
 [dev plugin]
+bootstarp2
 sshfs pi@192.168.1.48:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
 echo "">~/.octoprint/logs/octoprint.log
@@ -189,7 +195,7 @@ https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octop
 
 [ocptoprint:action]
 beforeHome
-M501
+M501;M666 Z0
 
 afterHome 
 M290 P0 Z0.7

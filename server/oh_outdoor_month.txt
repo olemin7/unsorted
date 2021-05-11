@@ -1,0 +1,76 @@
+config:
+  chartType: month
+  label: outdoor_month
+  sidebar: true
+slots:
+  grid:
+    - component: oh-chart-grid
+      config: {}
+  xAxis:
+    - component: oh-category-axis
+      config:
+        gridIndex: 0
+        categoryType: month
+        weekdayFormat: default
+        monthFormat: default
+  yAxis:
+    - component: oh-value-axis
+      config:
+        gridIndex: 0
+    - component: oh-value-axis
+      config:
+        gridIndex: 0
+        name: kPa
+        scale: true
+  series:
+    - component: oh-aggregate-series
+      config:
+        name: average
+        gridIndex: 0
+        xAxisIndex: 0
+        yAxisIndex: 1
+        type: line
+        color: black
+        item: weather_pressure
+        dimension1: date
+        aggregationFunction: average
+        smooth: false
+    - component: oh-aggregate-series
+      config:
+        name: min
+        gridIndex: 0
+        xAxisIndex: 0
+        yAxisIndex: 0
+        type: line
+        color: blue
+        item: weather_outdoors_temperature
+        dimension1: date
+        aggregationFunction: min
+        step: middle
+        markPoint:
+          data:
+            - type: min
+    - component: oh-aggregate-series
+      config:
+        name: max
+        gridIndex: 0
+        xAxisIndex: 0
+        yAxisIndex: 0
+        type: line
+        color: red
+        item: weather_outdoors_temperature
+        aggregationFunction: max
+        dimension1: date
+        step: middle
+        markPoint:
+          data:
+            - type: max
+  tooltip:
+    - component: oh-chart-tooltip
+      config:
+        show: true
+  legend:
+    - component: oh-chart-legend
+      config:
+        show: true
+        bottom: "10"
