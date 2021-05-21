@@ -37,7 +37,7 @@ https://gist.github.com/mirhec/27e8df1b2ff52196fabb0f9ea5f4313f
 sudo apt-get install mosquitto mosquitto-clients
 
 sudo vim /etc/mosquitto/mosquitto.conf 
-add listener 1883
+add "listener 1883"
 sudo /etc/init.d/mosquitto restart
 
 [mqtt test]
@@ -45,8 +45,6 @@ one terminal
 mosquitto_sub -d -t hello/world
 Connect to another ssh session and run
 mosquitto_pub -d -t hello/world -m "Hello from terminal window 2!"
-
-
 
 [dev]
 
