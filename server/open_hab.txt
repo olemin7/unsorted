@@ -16,10 +16,11 @@ openhab-cli console
 Add-ons
 feature:list | grep ^openhab
 feature:list | grep Started
-feature:install openhab-persistence-rrd4j
-openhab-binding-ntp
-openhab-transformation-jsonpath
-openhab-binding-mqtt     
+feature:install openhab-persistence-rrd4j openhab-binding-ntp openhab-transformation-jsonpath openhab-binding-mqtt     
+
+sudo usermod -a -G openhab olemin
+sudo chmod g+w * -R
+git clone https://github.com/olemin7/openhab.git
 
 [oh port]
 sudo /bin/systemctl stop openhab.service
@@ -79,3 +80,6 @@ sudo apt-get install grafana-enterprise
 
 [editor]
 https://github.com/cyberkov/openhab-vim
+
+[homie]
+mosquitto_sub -v -t homie/#
