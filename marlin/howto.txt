@@ -1,9 +1,9 @@
-material|temp 		| glass |cover 	|speed/fl |retract	|colling	|min layer time  
-abs+ 	|	205     |  100	|	65	|80mm/15  |6mm		|-			|10s/10 lift head on
-pla 	|	195/65 	| 75	| 	50	|100mm/15 |5mm		|+
+material|temp 		| glass |cover 	|speed/fl |retract	|colling	|min layer time  		|
+abs+ 	|	205     |  100	|	65	|80mm/15  |6mm		|-			|10s/10 lift head on    | metal
+pla 	|	195/65 	| 75	| 	50	|100mm/15 |5mm		|+			|						|
 pla+ 	|	217/75  | 85	| 		|100mm/15 |5mm		|+
-abs flex|	245     | 100	|		|30mm/15  |8mm		|+/-
-coPET 	|	235     | 80	|		|60mm/15  |8mm		|+/-
+abs flex|	245     | 100	|		|40mm/15  |8mm		|+/-		|						|metal
+coPET 	|	235     | 80	|		|50mm/15  |8mm		|50%
 
 C:\Program Files\Cura 2.6\resources\materials
 
