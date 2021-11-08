@@ -17,6 +17,7 @@ Add-ons
 feature:list | grep ^openhab
 feature:list | grep Started
 feature:install openhab-persistence-rrd4j openhab-binding-ntp openhab-transformation-jsonpath openhab-binding-mqtt     
+logout
 
 sudo usermod -a -G openhab olemin
 sudo chmod g+w * -R

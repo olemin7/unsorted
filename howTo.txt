@@ -1,6 +1,11 @@
 [eclipse]
+#codestyle
 c/c++>Code Style >formater
-c/c++>Editor>sav Action
+c/c++>Editor>save Action
+#exclude from index
+Go to project Properties -> C/C++ General -> Paths and Symbols.
+Go to Source Location tab, click on your project name and choose Edit Filter.
+In the Edit Filter dialog, add the files you want to be excluded from indexing.
 
 [arduino]
 http://downloads.arduino.cc/packages/package_index.json

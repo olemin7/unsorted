@@ -180,15 +180,15 @@ pip install "https://github.com/costas-basdekis/MarlinGcodeDocumentation/archive
 
 [dev plugin]
 bootstarp2
-sshfs pi@192.168.1.48:/home/pi -p 22 ~/mnt
+sshfs pi@192.168.1.10:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
 echo "">~/.octoprint/logs/octoprint.log
 
-ssh -p '22' pi@192.168.1.48
+ssh -p '22' pi@192.168.1.10
 
 https://docs.octoprint.org/en/master/plugins/gettingstarted.html
 source ~/oprint/bin/activate
-python setup.py develop
+octoprint dev plugin:install
 sudo service octoprint restart
 
 https://docs.octoprint.org/en/master/plugins/helpers.html~/.octoprint/config.yaml
