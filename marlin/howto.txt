@@ -177,6 +177,22 @@ pip install "https://github.com/OctoPrint/OctoPrint-FirmwareUpdater/archive/mast
 pip install "https://github.com/Sebclem/OctoPrint-SimpleEmergencyStop/archive/master.zip"
 pip install "https://github.com/benlye/OctoPrint-ActionCommandsPlugin/archive/master.zip"
 pip install "https://github.com/costas-basdekis/MarlinGcodeDocumentation/archive/master.zip"
+pip install "https://github.com/quanticchaos/OctoPrint-Webcamsb/archive/master.zip"
+
+[multicam]
+https://www.youtube.com/watch?v=SdDq1wfTn0A&ab_channel=ChrisRiley
+
+$ cd /root/bin/
+sudo cp webcamd webcamd2
+$ cd /etc/default/
+sudo cp webcamd webcamd2
+sudo vim /etc/default/webcamd2
+cd /etc/systemd/system/
+sudo cp webcamd.service webcamd2.service
+sudo vim webcamd2.service
+sudo systemctl enable webcamd2
+sudo service webcamd2 status
+sudo vim /etc/haproxy/haproxy.cfg
 
 [dev plugin]
 bootstarp2
@@ -203,7 +219,7 @@ https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octop
 
 [ocptoprint:action]
 beforeHome
-M501;M666 Z0
+M501;M666 Z0.62
 
 afterHome 
 M290 P0 Z0.7

@@ -44,3 +44,5 @@ New-Item -ItemType SymbolicLink -Name "marlin.pp" -Target "D:\user\hobby\git\uns
 [smart Watch q50]
 pw,123456,apn,www.umc.ua#
 
+[fusion]
+https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux //fail
