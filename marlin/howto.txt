@@ -78,8 +78,8 @@ Recv: echo:; PID settings:
 Recv: echo:  M301 P15.58 I0.73 D83.28
 Recv: echo:  M304 P52.15 I8.97 D202.22
 
-M303 C7 E0 S210 U1
-M303 C7 E-1 S100 U1
+M303 C7 E0 S210 U1 ; nozle
+M303 C7 E-1 S100 U1 ;bed
 
 M500 ;save
 
@@ -91,10 +91,6 @@ M211 S0; dizable Software Endstops
 G92 X0 Y0 Z0
 G0 F1000 X-300
 M114; Get Current Position
-
-[pid]
-M303 C10 E0 S215 U1 
-M500 ;save
 
 [z stepper]
 M118 //action:beforeHome
@@ -152,6 +148,9 @@ git difftool upstream/bugfix-2.0.x
 
 https://docs.platformio.org/en/latest/core/installation.html#super-quick-mac-linux
 https://marlinfw.org/docs/basics/install_platformio_cli.html
+
+ln -sf ~/personal/repo/unsorted/marlin/skr/Configuration.h .
+ln -sf ~/personal/repo/unsorted/marlin/skr/Configuration_adv.h .
 
 source deactivate
 source ~/.platformio/penv/bin/activate
