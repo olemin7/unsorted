@@ -78,7 +78,7 @@ M150 R0 B0 U255 ;green
 M150 R0 U0 B255 P255
 M80
 M501
-M666 Z1.3 ; Z correction
+M666 Z-0.95 ; Z2 correction=-(Z2-Z1)
 g28
 M155 S60; set temperature reporting delay, use a value longer than the time it takes for your leveling command to complete.
 @BEDLEVELVISUALIZER	; instruct plugin to start recording responses from printer.
@@ -98,7 +98,7 @@ Recv: echo:; PID settings:
 Recv: echo:  M301 P15.58 I0.73 D83.28
 Recv: echo:  M304 P52.15 I8.97 D202.22
 
-M303 C7 E0 S210 U1 ; nozle
+M303 C7 E0 S205 U1 ;nozle
 M303 C7 E-1 S100 U1 ;bed
 
 M500 ;save
