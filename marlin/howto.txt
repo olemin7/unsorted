@@ -1,9 +1,9 @@
-material|temp 		| glass |cover 	|speed/fl |retract	|colling	|min layer time  		|
-abs+ 	|	205     |  100	|	65	|100/15   |6mm		|-			|10s/10 lift head on    | metal
-pla 	|	195/65 	| 75	| 	50	|100mm/15 |5mm		|+			|						|
-pla+ 	|	217/75  | 85	| 		|100mm/15 |5mm		|+
-abs flex|	245     | 100	|		|40mm/15  |8mm		|+/-		|						|metal
-coPET 	|	230     | 85	|		|50mm/15  |8mm		|50%
+material|temp 		| glass |cover 	|speed/fl|retract	|colling	|min layer time  		|
+abs+ 	|	205     |  100	|	65	|80/15   |6mm		|20%			|10s/10 lift head on    | metal
+pla 	|	195/65 	| 75	| 	50	|80/15   |5mm		|+			|						|
+pla+ 	|	217/75  | 85	| 		|80/15   |5mm		|+
+abs flex|	245     | 100	|		|40/15   |8mm		|+/-		|						|metal
+coPET 	|	230     | 100	|		|40/15   |8mm		|50%
 
 C:\Program Files\Cura 2.6\resources\materials
 
@@ -92,7 +92,7 @@ G29 T1;start bed level
 M666 Z
 M500;eeprom save
 
-[pid calibration]
+[calibration]
 M503; show
 Recv: echo:; PID settings:
 Recv: echo:  M301 P15.58 I0.73 D83.28
@@ -111,6 +111,8 @@ M211 S0; dizable Software Endstops
 G92 X0 Y0 Z0
 G0 F1000 X-300
 M114; Get Current Position
+
+https://teachingtechyt.github.io/calibration.html#accel
 
 [z stepper]
 M118 //action:beforeHome
@@ -231,7 +233,6 @@ https://docs.octoprint.org/en/master/plugins/helpers.html~/.octoprint/config.yam
 stty -F /dev/ttyACM0 -hupcl
 which will disable "the usual" USB -> Serial -> CTS/DTR, etc -> RESET action
 3275 
-
 
 [dev]
 https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/blob/master/octoprint_metadatapreprocessor/__init__.py
