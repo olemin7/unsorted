@@ -217,7 +217,12 @@ sudo vim /etc/haproxy/haproxy.cfg
 
 [dev plugin]
 bootstarp2
-sshfs pi@192.168.1.10:/home/pi -p 22 ~/mnt
+sudo minicom -b 115200 -D /dev/ttyUSB0
+export PI_IP=192.168.1.246
+export PI_IP=192.168.1.10 #real
+ssh pi@${PI_IP}
+
+sshfs pi@${PI_IP}:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
 echo "">~/.octoprint/logs/octoprint.log
 
