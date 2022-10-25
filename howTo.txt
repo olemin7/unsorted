@@ -2,6 +2,7 @@
 #codestyle
 c/c++>Code Style >formater
 c/c++>Editor>save Action
+
 #exclude from index
 Go to project Properties -> C/C++ General -> Paths and Symbols.
 Go to Source Location tab, click on your project name and choose Edit Filter.
@@ -14,7 +15,16 @@ https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 [platformio]
 source ~/.platformio/penv/bin/activate
 pio project init --ide eclipse
+pio run
 
+platformio run --target upload
+platformio run --target uploadfs 
+
+github libs
+~/.ssh/config
+Host github.com
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
 
 [Git Diff and Meld on Windows]
 You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable

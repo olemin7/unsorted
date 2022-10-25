@@ -144,21 +144,20 @@ sw
 
 https://www.autodesk.com/products/eagle/overview
 https://github.com/McNugget6750/pcb-gcode
-https://github.com/martin2250/OpenCNCPilot
 
 https://www.hackster.io/Richa1/create-g-code-from-an-eagle-file-1f8ec6
+https://copper.carbide3d.com/
+https://www.instructables.com/PCB-Milling-Using-a-3D-Printer/
 
-https://www.diymodules.org/eagle
 
--https://inkscape.org/release/inkscape-0.92.4/
--http://flatcam.org/
+RPM:15000
+tool     |feed XY |feedZ 
+0.2x25   | 200    |144
+0.2x15   | 200    |144  bad
+drill    | 200    |100
+mill     | 100    |144
 
-http://192.168.1.48/webcam/?action=stream
-disable endstops
-M121
-M211 S0
 
-ajust stepper to if use gear 3:1 480, 480,  M92 -
 
 [build]
 git remote add upstream https://github.com/MarlinFirmware/Marlin.git
@@ -226,7 +225,6 @@ sshfs pi@${PI_IP}:/home/pi -p 22 ~/mnt
 tail -f ~/.octoprint/logs/octoprint.log
 echo "">~/.octoprint/logs/octoprint.log
 
-ssh -p '22' pi@192.168.1.10
 
 https://docs.octoprint.org/en/master/plugins/gettingstarted.html
 source ~/oprint/bin/activate

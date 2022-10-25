@@ -84,11 +84,14 @@
 //#define CUSTOM_STATUS_SCREEN_IMAGE
 
 // @section machine
-
-#define PS_ON_PIN          PE6  //PE8
-#define NEOPIXEL_PIN       PE8  //PE6
-#define Z_MIN_PROBE_PIN    PE5
+// https://github.com/olemin7/SKR-2/blob/master/Hardware/BIGTREETECH%20SKR%202-Pin.pdf
+#define PS_ON_PIN          PE4 // probe
+#define NEOPIXEL_PIN       PE8 //[ps-on]
+#define Z_MIN_PROBE_PIN    PE5 // servos 
 #define CONTROLLER_FAN_PIN PB6 // Fan1
+#define SPINDLE_LASER_PWM_PIN -1
+#define SPINDLE_LASER_ENA_PIN PE6// rgb
+
 
 #define HEATER_0_PIN    PD7   // Hotbed
 #define FAN_PIN         PB4   // Heater1
@@ -433,7 +436,7 @@
     //#define AUTO_POWER_CONTROLLERFAN
     //#define AUTO_POWER_CHAMBER_FAN
     //#define AUTO_POWER_COOLER_FAN
-    #define POWER_TIMEOUT              30 // (s) Turn off power if the machine is idle for this duration
+    #define POWER_TIMEOUT            10*60 // (s) Turn off power if the machine is idle for this duration
     #define POWER_OFF_DELAY          60 // (s) Delay of poweroff after M81 command. Useful to let fans run for extra time.
   #endif
   #if EITHER(AUTO_POWER_CONTROL, POWER_OFF_WAIT_FOR_COOLDOWN)
