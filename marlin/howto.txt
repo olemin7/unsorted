@@ -1,9 +1,13 @@
 material|temp 		| glass |cover 	|speed/fl|retract	|colling	|min layer time  		|
-abs+ 	|	205     |  100	|	65	|80/15   |6mm		|20%			|10s/10 lift head on    | metal
+abs+ 	|	205     |  100	|	65	|80/15   |6mm		|20%		|10s/10 lift head on    | metal
 pla 	|	195/65 	| 75	| 	50	|80/15   |5mm		|+			|						|
 pla+ 	|	217/75  | 85	| 		|80/15   |5mm		|+
 abs flex|	245     | 100	|		|40/15   |8mm		|+/-		|						|metal
 coPET 	|	230     | 100	|		|40/15   |8mm		|50%
+
+accesleration 800
+jerk 10
+
 
 C:\Program Files\Cura 2.6\resources\materials
 
@@ -56,7 +60,8 @@ M140 S0 ;heated bed heater off
 M106 S0 ;shut down blower fan
 G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
-G1 Z+15 E-5 F9000 ;move Z up a bit and retract filament even more
+G1 Z+2 E-5 F9000 ;move Z up a bit and retract filament even more
+G1 Z+15 E-2 F9000 ;move Z up a bit and retract filament even more
 G90 ;absolute positioning
 M84 ;steppers off
 
@@ -178,9 +183,6 @@ source ~/.platformio/penv/bin/activate
 C:\Users\family\.platformio\penv\Scripts\activate
 
 platformio run -e BIGTREE_SKR_2
-platformio run -e mega2560
-
-platformio run -e mega2560 --target upload
 
 
 [octoprint]

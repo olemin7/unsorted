@@ -43,6 +43,8 @@ sudo vim /etc/apcupsd/apcupsd.conf
 sudo vim /etc/default/apcupsd
 sudo systemctl start apcupsd
 sudo vim /etc/apache2/apache2.conf 
+
+
 add
 #ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
 #<Directory /usr/lib/cgi-bin/apcupsd>
@@ -54,6 +56,8 @@ add
 sudo a2enmod cgi
 sudo service apache2 restart
 apcaccess status
+sudo service apcupsd stop
+sudo apctest
 
 [zoneminder]
 https://wiki.zoneminder.com/Ubuntu_Server_or_Desktop_Zoneminder_1.34.x

@@ -85,8 +85,8 @@
 
 // @section machine
 // https://github.com/olemin7/SKR-2/blob/master/Hardware/BIGTREETECH%20SKR%202-Pin.pdf
-#define PS_ON_PIN          PE4 // probe
-#define NEOPIXEL_PIN       PE8 //[ps-on]
+#define PS_ON_PIN          PE8 // ps-on
+#define NEOPIXEL_PIN       PE4 // probe
 #define Z_MIN_PROBE_PIN    PE5 // servos 
 #define CONTROLLER_FAN_PIN PB6 // Fan1
 #define SPINDLE_LASER_PWM_PIN -1
