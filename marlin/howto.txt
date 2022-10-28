@@ -30,8 +30,8 @@ G90;G0 Z10 F1500;G0 X2 Y-10 ;G0 Z1;G91;G1 F50 E15;G0 E-3 F20;G1 Y10 Z1 F500;G90;
 plotter
 G92 X0 Y0 Z0
 
-parkXY
-G91;G0 Z+5 F3000;G90;G0 X0 Y216
+endPrint
+G91;G0 Z+15 F3000;G90;G0 X0 Y216
 
 
 [3d] 
@@ -62,7 +62,7 @@ G91 ;relative positioning
 G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
 G1 Z+2 E-5 F9000 ;move Z up a bit and retract filament even more
 G1 Z+15 E-2 F9000 ;move Z up a bit and retract filament even more
-G90 ;absolute positioning
+M118 //action:endPrint
 M84 ;steppers off
 
 [cnc]
