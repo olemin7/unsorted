@@ -1,0 +1,3 @@
+https://wiki.libreelec.tv/configuration/ir-remotes
+cp /usr/lib/udev/rc_keymaps/samsung_ak59_00125a.toml /storage/.config/rc_keymaps/sams_cust.toml
+ir-keytable -c -w /storage/.config/rc_keymaps/sams_cust.toml
