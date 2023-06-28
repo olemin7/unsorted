@@ -12,17 +12,24 @@ https://www.openhab.org/download/
             sudo /bin/systemctl stop openhab.service
             sudo /bin/systemctl restart openhab.service
 
+
+openhab-cli showlogs
+tail -f /var/log/openhab/openhab.log
+sudo tail -f /var/log/mosquitto/mosquitto.log
+
+
 openhab-cli console
 pwd habopen
 Add-ons
 feature:list | grep ^openhab
 feature:list | grep Started
-feature:install openhab-persistence-rrd4j openhab-binding-ntp openhab-transformation-jsonpath openhab-binding-mqtt     
+feature:install openhab-persistence-rrd4j openhab-binding-ntp openhab-transformation-jsonpath openhab-binding-mqtt openhab-binding-gpio
 logout
 
 sudo usermod -a -G openhab olemin
 sudo chmod g+w * -R
 git clone https://github.com/olemin7/openhab.git .
+sshfs pi@central.local:/etc/openhab/ -p 22 ~/mnt
 
 [oh port]
 sudo /bin/systemctl stop openhab.service
@@ -30,9 +37,6 @@ sudo vim /etc/default/openhab
 
 https://openhab.org/docs/tutorial/things_advanced.html
 
-openhab-cli showlogs
-tail -f /var/log/openhab/openhab.log
-sudo tail -f /var/log/mosquitto/mosquitto.log
 
 [mqtt]
 https://gist.github.com/mirhec/27e8df1b2ff52196fabb0f9ea5f4313f
@@ -40,18 +44,24 @@ https://gist.github.com/mirhec/27e8df1b2ff52196fabb0f9ea5f4313f
 sudo apt-get install mosquitto mosquitto-clients
 
 sudo vim /etc/mosquitto/mosquitto.conf 
-add "listener 1883"
+add
+  listener 1883 0.0.0.0
+  allow_anonymous true
+
 sudo /etc/init.d/mosquitto restart
 
 [mqtt test]
 one terminal
 mosquitto_sub -d -t hello/world
+mosquitto_sub -d -t stat/weather3
 Connect to another ssh session and run
 mosquitto_pub -d -t hello/world -m "Hello from terminal window 2!"
 mosquitto_pub -h central.local -d -t stat/pr_clock -m "Hello from terminal window 2!"
+
+
 [dev]
 
-sshfs family@192.168.1.104:/etc/openhab/ -p 22 ~/mnt
+
 https://github.com/cyberkov/openhab-vim
 sudo chmod 666 
 
@@ -85,3 +95,15 @@ https://github.com/cyberkov/openhab-vim
 
 [homie]
 mosquitto_sub -v -t homie/#
+
+[gpio]
+https://www.openhab.org/addons/bindings/gpio/
+
+R +12
+G 220 ok
+B low bat
+D -ground
+same host as openHAB, then set host to ::1.
+
+#
+https://www.openhab.org/addons/bindings/telegram/
