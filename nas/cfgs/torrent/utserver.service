@@ -1,0 +1,15 @@
+[Unit]
+Description=uTorrent Server
+After=network.target
+
+[Service]
+Type=simple
+User=utorrent
+Group=utorrent
+ExecStart=/usr/bin/utserver -settingspath /opt/utorrent-server-alpha-v3_3/
+ExecStop=/usr/bin/pkill utserver
+Restart=always
+SyslogIdentifier=uTorrent Server
+
+[Install]
+WantedBy=multi-user.target

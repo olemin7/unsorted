@@ -14,6 +14,7 @@ sudo mount -av
 
 [miniDlna]
 sudo apt-get install minidlna
+sudo ln /home/olemin/repo/unsorted/nas/cfgs/minidlna.conf /etc/minidlna.conf -s
 sudo vim /etc/minidlna.conf
 add
 #media_dir=V,/mnt/wd40/torrent/unsorted/
@@ -22,6 +23,8 @@ add
 
 sudo service minidlna restart
 sudo service minidlna force-reload
+
+http://192.168.1.2:8200/
 
 [rtl8811au]
 https://github.com/gnab/rtl8812au
@@ -35,41 +38,6 @@ sudo systemctl restart apache2
 cd /var/www/
 clone
 mv .. html
-
-[apc]
-https://help.ubuntu.com/community/apcupsd
-sudo apt-get install apcupsd apcupsd-cgi
-sudo vim /etc/apcupsd/apcupsd.conf
-sudo vim /etc/default/apcupsd
-sudo systemctl start apcupsd
-sudo vim /etc/apache2/apache2.conf 
-
-
-add
-#ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
-#<Directory /usr/lib/cgi-bin/apcupsd>
-#    Options FollowSymLinks ExecCGI
-#    AddHandler cgi-script .cgi
-#    DirectoryIndex multimon.cgi
-#</Directory>
-
-sudo a2enmod cgi
-sudo service apache2 restart
-apcaccess status
-sudo service apcupsd stop
-sudo apctest
-
-[zoneminder]
-https://wiki.zoneminder.com/Ubuntu_Server_or_Desktop_Zoneminder_1.34.x
-
-sudo apt install apache2 php mariadb-server php-mysql libapache2-mod-php
-sudo mysql_secure_installation
-
-camera user:admin pwd:
-
-ln -sf /var/cache/zoneminder/events/ /home/amin/Dropbox/zoneminder
-sudo chown www-data:www-data -h events
-
 
 [dropbox]
 https://www.how2shout.com/linux/install-dropbox-gui-or-headless-on-ubuntu-20-04-lts/
@@ -110,7 +78,11 @@ sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver
 utserver -settingspath /opt/utorrent-server-alpha-v3_3/ -daemon
 demon
 sudo vim /etc/systemd/system/utserver.service
+sudo ln -s /home/olemin/repo/unsorted/nas/cfgs/torrent/utserver.service /etc/systemd/system/utserver.service
+sudo systemctl daemon-reload
+sudo systemctl restart utserve
 
+http://192.168.1.2:8080/gui/web/index.html
 user:admin 
 pwd:
 >>client
@@ -118,10 +90,16 @@ pwd:
 	8080
 	/gui/
 
+>>Run Program
+/mnt/wd40/torrent/config/new_torrent.sh '%D' '%F' '%N'  '%K' '%L'
+
 [smb]
 sudo apt-get install samba
 https://www.techrepublic.com/article/how-to-create-a-samba-share-on-ubuntu-server-20-04/
+sudo ln -s /home/olemin/repo/unsorted/nas/cfgs/smb.conf /etc/samba/smb.conf
 sudo vim /etc/samba/smb.conf
+sudo service smbd restart
+
 add
   [share]
     comment = Ubuntu File Server Share

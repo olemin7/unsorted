@@ -1,8 +1,16 @@
 #!/bin/bash
-echo $1
-echo $2
-echo file name $1/$2
-Dest="/mnt/wd40/media/new/"
-echo to $Dest$2
-ln -s "$1/$2" "$Dest$2"
-echo "$(date):$2" >> /mnt/wd40/media/new/log.txt
+# /mnt/wd40/torrent/config/new_torrent.sh '%D' '%F' '%N'  '%K' '%L'
+savedDir=$1
+name=$2
+title=$3
+kind=$4
+label=$5
+Dest="/mnt/wd40/torrent/new"
+
+echo "$(date):$savedDir:$name:$title:$kind:$label" >> $Dest/log.txt
+if [[ "$kind" == "multi" ]]; then
+	mkdir "$Dest/$title"
+	ln -sfv "$savedDir/"* "$Dest/$title/".
+else
+	ln -sfv "$savedDir/$title" "$Dest/$title"
+fi
