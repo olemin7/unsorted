@@ -2,6 +2,12 @@
 [ubuntu]
 https://www.linuxbabe.com/ubuntu/upgrade-ubuntu-18-04-to-ubuntu-20-04
 
+[swap]
+swapon --show
+sudo vim /etc/fstab
+comment swap.img
+sudo reboot
+
 [mount hdd]
 sudo fdisk -l
 sudo blkid
@@ -14,20 +20,22 @@ sudo mount -av
 
 [miniDlna]
 sudo apt-get install minidlna
-sudo ln /home/olemin/repo/unsorted/nas/cfgs/minidlna.conf /etc/minidlna.conf -s
+sudo vim /etc/default/minidlna 
+sudo cp /home/olemin/repo/unsorted/nas/cfgs/minidlna.conf /etc/minidlna.conf
 sudo vim /etc/minidlna.conf
 add
 #media_dir=V,/mnt/wd40/torrent/unsorted/
 #media_dir=V,/mnt/wd40/torrent/new
 #media_dir=V,/mnt/wd40/media/cartoon
 
+sudo service minidlna status
 sudo service minidlna restart
 sudo service minidlna force-reload
 
 http://192.168.1.2:8200/
+OPEN_TCP="8200"
+OPEN_UDP="1900"
 
-[rtl8811au]
-https://github.com/gnab/rtl8812au
 
 [Apache]
 https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04
@@ -60,38 +68,26 @@ sudo systemctl status lsyncd
 You need to add C:/Program Files (x86)/Meld/lib to your PATH environment variable
 sudo service zoneminder restart
 
-[utorrent]
-https://www.linuxbabe.com/ubuntu/install-utorrent-ubuntu-20-04
-https://tipsonubuntu.com/2020/05/26/install-%C2%B5torrent-ubuntu-20-04/
-sudo apt install libssl-dev
-sudo vim /etc/apt/sources.list
-#Bionic support 
-deb http://ca.archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://ca.archive.ubuntu.com/ubuntu/ bionic universe
-deb http://ca.archive.ubuntu.com/ubuntu/ bionic multiverse
-sudo apt update
-sudo apt install libssl1.0.0
 
-wget http://download-hr.utorrent.com/track/beta/endpoint/utserver/os/linux-x64-ubuntu-13-04 -O utserver.tar.gz
-sudo tar xvf utserver.tar.gz -C /opt/
-sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver
-utserver -settingspath /opt/utorrent-server-alpha-v3_3/ -daemon
-demon
-sudo vim /etc/systemd/system/utserver.service
-sudo ln -s /home/olemin/repo/unsorted/nas/cfgs/torrent/utserver.service /etc/systemd/system/utserver.service
-sudo systemctl daemon-reload
-sudo systemctl restart utserve
+[Deluge]
+https://deluge-torrent.org/installing/linux/ubuntu/
+https://deluge.readthedocs.io/en/latest/how-to/systemd-service.html
+/home/olemin/repo/unsorted/nas/cfgs/deluged/
+sudo systemctl status deluged
+sudo systemctl restart deluged
+sudo systemctl restart deluge-web
 
-http://192.168.1.2:8080/gui/web/index.html
-user:admin 
-pwd:
->>client
-	uTorrent WebUI
-	8080
-	/gui/
+sudo adduser $USER deluge
+sudo adduser minidlna deluge
 
->>Run Program
-/mnt/wd40/torrent/config/new_torrent.sh '%D' '%F' '%N'  '%K' '%L'
+
+password off 
+  /var/lib/deluge/.config/deluge/web.con
+   session_timeout from 3600 to 31536000
+
+sudo cp ~/repo/unsorted/nas/cfgs/deluged/new_torrent.sh  /var/lib/deluge/.
+sudo chown  deluge:deluge /var/lib/deluge/new_torrent.sh
+
 
 [smb]
 sudo apt-get install samba
